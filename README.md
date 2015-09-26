@@ -1,2 +1,2 @@
-My web app boilerplate based on HTML5 boilerplate using initializr with some 
-personal preferences.
+A basic angular quiz based on an excellent tutorial:
+http://odhyan.com/blog/2014/12/building-a-simple-quiz-app-using-angularjs/
