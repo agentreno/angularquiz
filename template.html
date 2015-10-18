@@ -1,19 +1,21 @@
 <div class="quiz-area ui segment" ng-show="inProgress">
    <div ng-show="!quizOver">
-      <div class="ui top attached teal label">Question X</div>
-      <h2 id="question">{{question}}</h2>
-      <ul id="options" class="ui vertical menu">
-         <li ng-repeat="option in options">
-            <label>
-               <input type="radio" name="answer" value="{{option}}" 
-                  class="item">
-                  <i class="right pointing icon"></i>
-               {{option}}
-            </label>
-         </li>
-      </ul>
-      <button class="ui primary button" ng-click="checkAnswer()" 
-         ng-show="answerMode">Submit</button>
+      <form ng-submit="checkAnswer()">
+         <div class="ui top attached teal label">Question X</div>
+         <h2 id="question">{{question}}</h2>
+         <ul id="options" class="ui vertical menu">
+            <li ng-repeat="option in options">
+               <label>
+                  <input type="radio" name="answer" ng-value="option" 
+                     class="item" ng-model="$parent.chosenanswer">
+                  {{option}}
+               </label>
+            </li>
+         </ul>
+         <p>Chosen: {{chosenanswer}}</p>
+         <input type="submit" class="ui primary button"
+            ng-show="answerMode" value="Submit">
+      </form>
 
       <div ng-show="!answerMode">
          <button ng-click="nextQuestion()" 

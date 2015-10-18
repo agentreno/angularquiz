@@ -45,15 +45,14 @@ app.directive('quiz', function(quizFactory){
                scope.options = q.options;
                scope.answer = q.answer;
                scope.answerMode = true;
+               scope.chosenanswer = q.options[0];
             } else {
                scope.quizOver = true;
             }
          };
 
          scope.checkAnswer = function() {
-            if(!$('input[name=answer]:checked').length) return;
-            var ans = $('input[name=answer]:checked').val();
-            if(ans == scope.options[scope.answer]){
+            if(scope.chosenanswer == scope.options[scope.answer]){
                scope.score++;
                scope.correctAns = true;
             } else {
