@@ -6,6 +6,11 @@ app.factory('quizFactory', function(){
          question: "Which is the largest country in the world by population?",
          options: ["India", "USA", "China", "Russia"],
          answer: 2
+      },
+      {
+         question: "What is your favourite colour?",
+         options: ["Red", "Purple", "Yellow", "AHHHHH"],
+         answer: 3
       }
    ];
 
@@ -16,6 +21,9 @@ app.factory('quizFactory', function(){
          } else {
             return false;
          }
+      },
+      getQuestionCount: function() {
+         return questions.length;
       }
    };
 });
@@ -28,6 +36,8 @@ app.directive('quiz', function(quizFactory){
       link: function(scope, elem, attrs){
          scope.start = function () {
             scope.id = 0;
+            scope.questionTotal = quizFactory.getQuestionCount();
+            scope.pcProgress = 0;
             scope.quizOver = false;
             scope.inProgress = true;
             scope.getQuestion();
@@ -63,6 +73,7 @@ app.directive('quiz', function(quizFactory){
 
          scope.nextQuestion = function(){
             scope.id++;
+            scope.pcProgress = (scope.id / scope.questionTotal) * 100;
             scope.getQuestion();
          }
 

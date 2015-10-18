@@ -12,7 +12,6 @@
                </label>
             </li>
          </ul>
-         <p>Chosen: {{chosenanswer}}</p>
          <input type="submit" class="ui primary button"
             ng-show="answerMode" value="Submit">
       </form>
@@ -33,9 +32,9 @@
    <div id="score">
       Score: {{score}}
    </div>
-   <div id="progress" class="ui blue progress active" data-percent="50">
-      <div class="bar" style="transition-duration: 300ms; width: 50%;"></div>
-      <div class="label">50% Complete</div>
+   <div id="progress" class="ui blue progress active" data-percent="{{pcProgress | number:1}}">
+      <div class="bar" style="transition-duration: 300ms; width: {{pcProgress | number:1}}%;"></div>
+      <div class="label">{{pcProgress | number:0}}% Complete</div>
    </div>
 </div>
 
